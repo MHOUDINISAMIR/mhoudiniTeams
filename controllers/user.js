@@ -6,13 +6,12 @@ const generateToken = (id) => {
  }
 
 const addUser = async (req, res, next)=>{
-   const {name, lastName, /* number ,*/sexe, departement, poste, email, password, imageUrl, isAdmin, adminId}= req.body
+   const {fname, lname, num ,sexe, poste, email, password, imageUrl, isAdmin, adminId}= req.body
    const createdUser = new User({
-      name, 
-      lastName, 
-      // number, 
-      sexe, 
-      departement, 
+      fname, 
+      lname, 
+      num, 
+      sexe,
       poste, 
       email, 
       password, 
@@ -68,7 +67,7 @@ const getUserById = async (req, res, next) => {
 }
 
 const updateUser = async (req, res, next) => {
-   const { name, lastName, number, sexe, departement, poste, email, password, imageUrl } = req.body
+   const { fname, lname, num, sexe, poste, email, password, imageUrl } = req.body
  
    const userId = req.params.userId
  
@@ -79,11 +78,10 @@ const updateUser = async (req, res, next) => {
      res.status(400).send(err)
    }
  
-   user.name = name
-   user.lastName = lastName
-   user.number = number
+   user.fname = fname
+   user.lname = lname
+   user.num = num
    user.sexe = sexe
-   user.departement = departement
    user.poste = poste
    user.email = email
    user.password = password
